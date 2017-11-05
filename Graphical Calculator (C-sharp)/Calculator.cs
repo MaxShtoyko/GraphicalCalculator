@@ -8,6 +8,17 @@ namespace Graphical_Calculator__C_sharp_
 {
     class Calculator
     {
+        static public double Calc(string exp)
+        {
+            string expression;
+            double result;
+
+            expression = GetPostfixForm(exp);
+            result = GetResult(expression);
+
+            return result;
+        }
+
         static private int GetPriority(char symbol)
         {
             switch (symbol)
@@ -22,8 +33,7 @@ namespace Graphical_Calculator__C_sharp_
                 default: return -1;
             }
         }
-
-        static private string GetExpression(string exp)
+        static private string GetPostfixForm(string exp)
         {
             string expression = "";
             Stack<char> stack = new Stack<char>();
@@ -122,10 +132,12 @@ namespace Graphical_Calculator__C_sharp_
                         {
                             temp += ',';
                         }
+
                         else
                         {
                             temp += exp[i];
                         }
+
                         i++;
                         if (i == exp.Length)
                             break;
@@ -156,10 +168,12 @@ namespace Graphical_Calculator__C_sharp_
                                 {
                                     temp += ',';
                                 }
+
                                 else
                                 {
                                     temp += exp[i];
                                 }
+
                                 i++;
                                 if (i == exp.Length)
                                     break;
@@ -204,15 +218,6 @@ namespace Graphical_Calculator__C_sharp_
                 }
             }
             return stack.Pop();
-        }
-
-        static public double Calc(string exp)
-        {
-            string expression;
-            double result;
-            expression = GetExpression(exp);
-            result = GetResult(expression);
-            return result;
-        }
+        }       
     }
 }
