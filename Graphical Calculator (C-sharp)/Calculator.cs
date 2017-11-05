@@ -35,9 +35,9 @@ namespace Graphical_Calculator__C_sharp_
                     continue;
                 }
 
-                if ("1234567890".IndexOf(exp[i]) != -1)
+                if ("1234567890.".IndexOf(exp[i]) != -1)
                 {
-                    while ("1234567890".IndexOf(exp[i]) != -1)
+                    while ("1234567890.".IndexOf(exp[i]) != -1)
                     {
                         expression += exp[i];
                         i++;
@@ -112,13 +112,20 @@ namespace Graphical_Calculator__C_sharp_
 
             for (int i = 0; i < exp.Length; i++)
             {
-                if ("1234567890".IndexOf(exp[i]) != -1)
+                if ("1234567890.".IndexOf(exp[i]) != -1)
                 {
                     string temp = "";
 
-                    while ("1234567890".IndexOf(exp[i]) != -1)
+                    while ("1234567890.".IndexOf(exp[i]) != -1)
                     {
-                        temp += exp[i];
+                        if (exp[i] == '.')
+                        {
+                            temp += ',';
+                        }
+                        else
+                        {
+                            temp += exp[i];
+                        }
                         i++;
                         if (i == exp.Length)
                             break;
@@ -132,13 +139,27 @@ namespace Graphical_Calculator__C_sharp_
                     {
                         string temp = "";
                        
-                        if ("1234567890".IndexOf(exp[i+1]) != -1)
+                        if ("1234567890.".IndexOf(exp[i+1]) != -1)
                         {
-                            temp += exp[i];
-                            i++;
-                            while ("1234567890".IndexOf(exp[i]) != -1)
+                            if (exp[i] == '.')
+                            {
+                                temp += ',';
+                            }
+                            else
                             {
                                 temp += exp[i];
+                            }
+                            i++;
+                            while ("1234567890.".IndexOf(exp[i]) != -1)
+                            {
+                                if (exp[i] == '.')
+                                {
+                                    temp += ',';
+                                }
+                                else
+                                {
+                                    temp += exp[i];
+                                }
                                 i++;
                                 if (i == exp.Length)
                                     break;
@@ -176,7 +197,7 @@ namespace Graphical_Calculator__C_sharp_
                         case '^':
                             {
                                 stack.Push(Math.Pow(y, x));
-                                break;
+                                break;                          
                             }
                     }
 
