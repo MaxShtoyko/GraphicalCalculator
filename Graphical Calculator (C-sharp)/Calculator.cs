@@ -63,14 +63,14 @@ namespace Graphical_Calculator__C_sharp_
                 {
                     if (i != (exp.Length - 1))
                     {
-                        if (exp[i] == '-' && ("1234567890".IndexOf(exp[i + 1]) != -1))
+                        if (exp[i] == '-' && ("1234567890".IndexOf(exp[i + 1]) != -1) )
                         {
                             if (i == 0)
                             {
                                 expression += exp[i];
                                 continue;
                             }
-                            else if(i>0 && "+-^*/()".IndexOf(exp[i])!=-1)
+                            else if(i>0 && "+-^*/()".IndexOf(exp[i-1])!=-1)
                             {
                                 expression += exp[i];
                                 continue;
